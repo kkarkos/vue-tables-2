@@ -47,8 +47,7 @@ module.exports = function () {
       filterBy: "Filter by {column}",
       loading: "Loading...",
       defaultOption: "Select {column}",
-      columns: "Columns",
-      loadingError: "Error loading results"
+      columns: "Columns"
     },
     sortIcon: {
       is: "glyphicon-sort",
@@ -72,16 +71,9 @@ module.exports = function () {
     footerHeadings: false,
     headings: {},
     headingsTooltips: {},
-    stickyHeader: false,
-    stickHeaderBackground: 'white',
-    selectable: {
-      selectAllMode: 'all',
-      programmatic: false
-    },
     pagination: {
       show: true,
       dropdown: false,
-      virtual: false,
       chunk: 10,
       edge: false,
       align: "center",
@@ -93,7 +85,6 @@ module.exports = function () {
     showChildRowToggler: true,
     uniqueKey: "id",
     requestFunction: false,
-    useDrawCounter: false,
     requestAdapter: function requestAdapter(data) {
       return data;
     },
@@ -110,8 +101,7 @@ module.exports = function () {
       orderBy: "orderBy",
       ascending: "ascending",
       page: "page",
-      byColumn: "byColumn",
-      draw: "draw"
+      byColumn: "byColumn"
     },
     rowClassCallback: false,
     preserveState: false,
@@ -126,6 +116,7 @@ module.exports = function () {
     resizableColumns: true,
     editableColumns: [],
     tabbable: true,
+    infiniteScroll: false,
     componentsOverride: {}
   };
 };

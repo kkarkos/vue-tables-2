@@ -17,7 +17,7 @@ var _default = {
       opts: this.opts(),
       setPage: this.setPage,
       options: this.opts().pagination,
-      virtualScroll: this.opts().virtualScroll,
+      infiniteScroll: this.opts().infiniteScroll,
       page: this.page(),
       records: this.count(),
       perPage: parseInt(this.limit()),

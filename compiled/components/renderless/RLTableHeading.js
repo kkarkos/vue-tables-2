@@ -23,9 +23,8 @@ var _default = {
     return this.$scopedSlots["default"]({
       opts: this.opts(),
       thAttrs: {
-        "class": "".concat(this.sortableClass(this.column), " ").concat(this.theme.th).trim(),
+        "class": this.sortableClass(this.column),
         tabIndex: this.tabIndex(),
-        style: this.getStyle(),
         title: this.getHeadingTooltip(this.column)
       },
       thEvents: {
@@ -46,21 +45,6 @@ var _default = {
       heading: this.getHeading(this.column, h),
       override: this.componentsOverride.tableHeading
     });
-  },
-  methods: {
-    getStyle: function getStyle() {
-      var cls = '';
-
-      if (this.opts().stickyHeader) {
-        cls += 'position:sticky; top:0;';
-      }
-
-      if (this.opts().stickyHeaderBackground) {
-        cls += "background:".concat(this.opts().stickyHeaderBackground, ";");
-      }
-
-      return cls;
-    }
   }
 };
 exports["default"] = _default;

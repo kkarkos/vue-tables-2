@@ -31,13 +31,6 @@ var _default2 = {
       scopedSlots: {
         "default": function _default(props) {
           var filters = [];
-
-          if (props.opts.selectable.mode) {
-            filters.push(h("th", {
-              "class": "VueTables__select-row"
-            }));
-          }
-
           if (props.hasChildRow && props.opts.childRowTogglerFirst && props.opts.showChildRowToggler) filters.push(h("th"));
           props.columns.map(function (column) {
             var filter = '';
@@ -55,7 +48,7 @@ var _default2 = {
             }
 
             filters.push(h("th", {
-              "class": "".concat(props.columnClass(column), " ").concat(props.theme.th)
+              "class": props.columnClass(column)
             }, [!!filter ? h("div", _defineProperty({
               "class": "VueTables__column-filter"
             }, "class", 'VueTables__' + column + '-filter-wrapper'), [filter]) : '']));
@@ -66,7 +59,7 @@ var _default2 = {
               props: props
             }
           }) : h("tr", {
-            "class": "VueTables__filters-row ".concat(props.theme.tr)
+            "class": "VueTables__filters-row"
           }, [filters]);
         }
       }

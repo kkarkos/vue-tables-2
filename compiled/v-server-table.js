@@ -14,8 +14,6 @@ var _resizeableColumns = _interopRequireDefault(require("./helpers/resizeable-co
 
 var _VtServerTable = _interopRequireDefault(require("./components/VtServerTable"));
 
-var _themes = _interopRequireDefault(require("./themes/themes"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _data = require("./mixins/data");
@@ -24,7 +22,11 @@ var _created = require("./mixins/created");
 
 var provide = require("./mixins/provide");
 
-var watch = require("./mixins/watch");
+var themes = {
+  bootstrap3: require('./themes/bootstrap3')(),
+  bootstrap4: require('./themes/bootstrap4')(),
+  bulma: require('./themes/bulma')()
+};
 
 exports.install = function (Vue, globalOptions, useVuex) {
   var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "bootstrap3";
@@ -89,7 +91,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
       this._setFiltersDOM(this.query);
 
       if (this.opts.resizableColumns) {
-        (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst, this.opts.resizableColumns, this.opts.stickyHeader);
+        (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst, this.opts.resizableColumns);
       } // this._setColumnsDropdownCloseListener();
 
 
@@ -105,7 +107,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
         lastKeyStrokeAt: false,
         globalOptions: globalOptions,
         componentsOverride: componentsOverride,
-        theme: typeof theme === 'string' ? _themes["default"][theme] : theme()
+        theme: typeof theme === 'string' ? themes[theme] : theme()
       }, (0, _data2["default"])(useVuex, "server", this.options.initialPage));
     },
     methods: {
@@ -134,14 +136,14 @@ exports.install = function (Vue, globalOptions, useVuex) {
             query: state.query,
             customQueries: state.customQueries,
             page: state.page,
-            limit: state.perPage,
+            limit: parseInt(state.perPage),
             orderBy: state.orderBy
           });
         } else {
           this.page = state.page;
           this.query = state.query;
           this.customQueries = state.customQueries;
-          this.limit = state.perPage;
+          this.limit = parseInt(state.perPage);
           this.orderBy = state.orderBy;
         }
 
@@ -160,11 +162,11 @@ exports.install = function (Vue, globalOptions, useVuex) {
         this.activeState = true;
       }
     },
-    watch: (0, _merge["default"])({
+    watch: {
       url: function url() {
         this.refresh();
       }
-    }, watch),
+    },
     computed: {
       totalPages: require("./computed/total-pages"),
       filteredQuery: require("./computed/filtered-query"),

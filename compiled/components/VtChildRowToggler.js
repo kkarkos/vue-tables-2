@@ -30,7 +30,6 @@ var _default2 = {
             attrs: {
               tabindex: props.tabIndex
             },
-            "class": props.theme.td,
             on: {
               "keypress": function keypress(e) {
                 if (e.key === 'Enter') {

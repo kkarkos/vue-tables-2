@@ -13,8 +13,6 @@ var _VtTableCell = _interopRequireDefault(require("./VtTableCell"));
 
 var _VtChildRowToggler = _interopRequireDefault(require("./VtChildRowToggler"));
 
-var _VtRowSelector = _interopRequireDefault(require("./VtRowSelector"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -23,8 +21,7 @@ var _default2 = {
   components: {
     RLTableRow: _RLTableRow["default"],
     VtTableCell: _VtTableCell["default"],
-    VtChildRowToggler: _VtChildRowToggler["default"],
-    VtRowSelector: _VtRowSelector["default"]
+    VtChildRowToggler: _VtChildRowToggler["default"]
   },
   render: function render() {
     var h = arguments[0];
@@ -48,7 +45,7 @@ var _default2 = {
               "click": props.rowEvents.click,
               "dblclick": props.rowEvents.click
             }
-          }]), [props.selectable ? h("vt-row-selector") : '', props.childRowTogglerFirst ? h("vt-child-row-toggler", {
+          }]), [props.childRowTogglerFirst ? h("vt-child-row-toggler", {
             attrs: {
               "row-id": props.rowId
             }

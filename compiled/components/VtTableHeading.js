@@ -39,8 +39,7 @@ var _default2 = {
             attrs: {
               title: props.thAttrs.title,
               tabindex: props.thAttrs.tabIndex
-            },
-            style: props.thAttrs.style
+            }
           }, [h("span", {
             "class": "VueTables__heading",
             attrs: {

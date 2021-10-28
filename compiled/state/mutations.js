@@ -16,7 +16,7 @@ function _default(self) {
 
   var extra = self.source == 'server' ? (_ref = {}, _defineProperty(_ref, "".concat(self.name, "/SET_DATA"), function SET_DATA(state, response) {
     var data = self.opts.responseAdapter.call(self, response);
-    state.data = self.opts.pagination.virtual && state.page !== 1 ? state.data.concat(data.data) : data.data;
+    state.data = data.data;
     state.count = parseInt(data.count);
   }), _defineProperty(_ref, "".concat(self.name, "/ERROR"), function ERROR(state, payload) {}), _defineProperty(_ref, "".concat(self.name, "/SET_COUNT"), function SET_COUNT(state, count) {
     state.count = count;
@@ -91,5 +91,5 @@ function _default(self) {
     if (self.source == 'server') self.getData();
   }), _defineProperty(_merge$recursive, "".concat(self.name, "/SET_CLIENT_DATA"), function SET_CLIENT_DATA(state, data) {
     state.data = data;
-  }), _defineProperty(_merge$recursive, "".concat(self.name, "/SORTED"), function SORTED(state, data) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/ROW_CLICK"), function ROW_CLICK(state, row) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/FILTER"), function FILTER(state, row) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/LIMIT"), function LIMIT(state, limit) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/INPUT"), function INPUT(state, payload) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/UPDATE"), function UPDATE(state, payload) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/LOADING"), function LOADING(state, payload) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/LOADED"), function LOADED(state, payload) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/SELECT"), function SELECT(state, payload) {}), _merge$recursive), extra);
+  }), _defineProperty(_merge$recursive, "".concat(self.name, "/SORTED"), function SORTED(state, data) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/ROW_CLICK"), function ROW_CLICK(state, row) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/FILTER"), function FILTER(state, row) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/LIMIT"), function LIMIT(state, limit) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/INPUT"), function INPUT(state, payload) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/UPDATE"), function UPDATE(state, payload) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/LOADING"), function LOADING(state, payload) {}), _defineProperty(_merge$recursive, "".concat(self.name, "/LOADED"), function LOADED(state, payload) {}), _merge$recursive), extra);
 }

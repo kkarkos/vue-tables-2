@@ -48,11 +48,8 @@ var _default2 = {
               domProps: {
                 "value": column,
                 "checked": props.columns.includes(column)
-              },
-              "class": props.theme.dropdown.checkbox
-            }), h("span", {
-              "class": props.theme.dropdown.text
-            }, [props.getHeading(column)])]);
+              }
+            }), props.getHeading(column)]);
             return props.theme.framework === 'bulma' ? content : h("li", [content]);
           });
           return h("div", {
