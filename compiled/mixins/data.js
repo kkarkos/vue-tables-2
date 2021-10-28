@@ -7,7 +7,11 @@ module.exports = function () {
     openChildRows: [],
     windowWidth: typeof window !== 'undefined' ? window.innerWidth : null,
     userMultiSorting: {},
-    editing: []
+    editing: [],
+    selectedIndex: false,
+    loadingError: false,
+    cancelToken: null,
+    drawCounter: 0
   };
 };
 

@@ -17,6 +17,10 @@ var _VtGenericFilter = _interopRequireDefault(require("./VtGenericFilter"));
 
 var _VtColumnsDropdown = _interopRequireDefault(require("./VtColumnsDropdown"));
 
+var _Observer = _interopRequireDefault(require("./Observer"));
+
+var _VtPaginationCount = _interopRequireDefault(require("./VtPaginationCount"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -27,7 +31,9 @@ var _default2 = {
     VtPagination: _VtPagination["default"],
     VtDropdownPagination: _VtDropdownPagination["default"],
     VtColumnsDropdown: _VtColumnsDropdown["default"],
-    VtGenericFilter: _VtGenericFilter["default"]
+    VtGenericFilter: _VtGenericFilter["default"],
+    VtPaginationCount: _VtPaginationCount["default"],
+    Observer: _Observer["default"]
   },
   props: {
     columns: {
@@ -62,8 +68,8 @@ var _default2 = {
     data: function data() {
       return this.$refs.table.tableData;
     },
-    filtersCount: function filtersCount() {
-      return this.$refs.table.filtersCount;
+    selectedRows: function selectedRows() {
+      return this.$refs.table.selectedRows;
     }
   },
   methods: {
@@ -97,6 +103,27 @@ var _default2 = {
     },
     resetQuery: function resetQuery() {
       this.$refs.table.resetQuery();
+    },
+    resetSelectedRows: function resetSelectedRows() {
+      this.$refs.table.resetSelectedRows();
+    },
+    selectRow: function selectRow(id) {
+      return this.$refs.table.selectRow(id);
+    },
+    unselectRow: function unselectRow(id) {
+      return this.$refs.table.unselectRow(id);
+    },
+    selectRows: function selectRows(ids) {
+      return this.$refs.table.selectRows(ids);
+    },
+    unselectRows: function unselectRows(ids) {
+      return this.$refs.table.unselectRows(ids);
+    },
+    toggleRow: function toggleRow(id) {
+      return this.$refs.table.toggleRow(id);
+    },
+    selectAllRows: function selectAllRows() {
+      return this.$refs.table.selectAllRows();
     },
     getRequestParams: function getRequestParams() {
       return this.$refs.table.getRequestParams();
@@ -151,7 +178,7 @@ var _default2 = {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.left, " VueTables__search")
           }, [props.slots.beforeFilter, h("vt-generic-filter", {
             ref: "genericFilter"
-          }), props.slots.afterFilter]) : '', props.slots.afterFilterWrapper, props.perPageValues.length > 1 || props.opts.alwaysShowPerPageSelect ? h("div", {
+          }), props.slots.afterFilter]) : '', props.slots.afterFilterWrapper, (props.perPageValues.length > 1 || props.opts.alwaysShowPerPageSelect) && !props.opts.pagination.virtual ? h("div", {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.right, " VueTables__limit")
           }, [props.slots.beforeLimit, h("vt-per-page-selector"), props.slots.afterLimit]) : '', props.opts.pagination.dropdown && props.totalPages > 1 ? h("div", {
             "class": "VueTables__pagination-wrapper"
@@ -160,10 +187,17 @@ var _default2 = {
           }, [h("vt-dropdown-pagination")])]) : '', props.opts.columnsDropdown ? h("div", {
             "class": "VueTables__columns-dropdown-wrapper ".concat(props.theme.right, " ").concat(props.theme.dropdown.container)
           }, [h("vt-columns-dropdown")]) : ''])]), props.slots.beforeTable, h("div", {
-            "class": "table-responsive"
+            "class": "table-responsive",
+            style: props.styles()
           }, [h("vt-table", {
             ref: "vt_table"
-          })]), props.slots.afterTable, props.opts.pagination.show ? h("vt-pagination") : '']);
+          }), props.opts.pagination.virtual && !props.loading ? h("observer", {
+            on: {
+              "intersect": function intersect() {
+                return props.setPage(props.page + 1);
+              }
+            }
+          }) : '']), props.slots.afterTable, props.opts.pagination.virtual || !props.opts.pagination.show ? '' : h("vt-pagination"), props.opts.pagination.virtual || props.opts.pagination.dropdown ? h("vt-pagination-count") : '']);
         }
       }
     });

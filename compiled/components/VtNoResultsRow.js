@@ -24,14 +24,14 @@ var _default2 = {
               props: props
             }
           }) : h("tr", {
-            "class": "VueTables__no-results"
+            "class": props["class"]
           }, [h("td", {
-            "class": "text-center",
+            "class": "text-center ".concat(props.tdClass),
             attrs: {
               tabindex: props.tabIndex,
               colspan: props.colspan
             }
-          }, [props.display(props.message)])]);
+          }, [props.message])]);
         }
       }
     });

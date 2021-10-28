@@ -63,5 +63,15 @@ module.exports = {
   _updateValue: require('../methods/update-value'),
   _filterType: require('../methods/filter-type'),
   _search: require('../methods/search'),
-  setCustomFilters: require('../methods/set-custom-filters')
+  setCustomFilters: require('../methods/set-custom-filters'),
+  toggleRowSelection: require('../methods/toggle-row-selection'),
+  isRowSelected: require('../methods/is-row-selected'),
+  toggleAllRows: require('../methods/toggle-all-rows'),
+  resetSelectedRows: require('../methods/reset-selected-rows'),
+  selectRow: require('../methods/select-row'),
+  selectRows: require('../methods/select-rows'),
+  unselectRow: require('../methods/unselect-row'),
+  unselectRows: require('../methods/unselect-rows'),
+  toggleRow: require('../methods/toggle-row'),
+  selectAllRows: require('../methods/select-all-rows')
 };

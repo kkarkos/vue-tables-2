@@ -1,5 +1,6 @@
 <template>
-    <tr :class="props.theme.groupTr" @click="props.toggleGroupDirection">
+    <tr :class="`VueTables__group-row VueTables__group-row--${props.level}`"
+        @click="props.toggleGroupDirection">
         <td :colspan="props.colspan">
             <!-- Togglable group (toggleGroups: true)-->
             <button v-if="props.canToggleGroup"
