@@ -3,9 +3,14 @@
 module.exports = function () {
   return {
     framework: 'bootstrap4',
-    td: '',
     table: 'table table-striped table-bordered table-hover',
+    tbody: '',
     row: 'row',
+    th: '',
+    td: '',
+    tr: '',
+    trEven: '',
+    trOdd: '',
     column: 'col-md-12',
     label: '',
     input: 'form-control',
